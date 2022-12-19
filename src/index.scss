@@ -1,0 +1,338 @@
+:root {
+  --varPerspective: calc(var(--length) * 71px);
+  --varTranslate: calc(var(--length) * 20px)
+}
+
+.navbar {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  display: block;
+
+  :nth-child(1) {
+    position: absolute;
+    left: 10px;
+  }
+  :nth-child(2) {
+    left: 80px;
+  }
+  :nth-child(3) {
+    left: 150px
+  }
+
+  a {
+    color: greenyellow;
+    text-decoration: none;
+  }
+}
+
+.nav-item {
+  text-decoration: none;
+  list-style-type: none;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+main {
+  z-index: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right,#bc13fe 2%, #020309 8% 92%, #bc13fe 98%);
+  min-height: 100vh;
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+#title {
+  display: none;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: -25px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color:black;
+  text-shadow:2px 5px 10px #65008c, 3px 3px 15px white
+}
+
+#carousel {
+  display: table-cell;
+  vertical-align: middle;
+}
+.gallery {
+  margin: auto;
+  width: 200px;
+  height: 125px;
+  transform-style:preserve-3d;
+  animation: rotate 46s linear infinite;
+}
+
+.gallery:hover {
+  animation-play-state: paused;
+}
+
+span:hover {
+  opacity: .95;
+  border: 3px solid #fff;
+  box-shadow: 0 0 .2rem #fff,
+  0 0 .2rem #fff,
+  0 0 2rem #bc13fe,
+  0 0 0.8rem #bc13fe,
+  0 0 2.8rem #bc13fe,
+  inset 0 0 1.3rem #bc13fe;
+
+  
+  :nth-child(2), :nth-child(3) {
+    display:block;
+    animation: fadeIn;
+    animation-duration: 2s;
+    color: #65008c;
+    text-shadow:5px 5px 10px #65008c, 5px 5px 15px black
+  }
+  :nth-child(2):hover, :nth-child(3):hover {
+    color:#bc13fe
+  }
+}
+
+.gallery .demo {
+  position:absolute;
+  top: 15px;
+  left: 20px;
+  font-weight: 300;
+  font-size: 20px;
+  display: none;
+  text-decoration: none;
+}
+
+.gallery .github {
+  position:absolute;
+  bottom: 15px;
+  right: 20px;
+  font-weight: 300;
+  font-size: 20px;
+  display: none;
+  text-decoration: none;
+}
+
+.pictures {
+  transform:rotateX(calc(var(--id) * (1080deg/(var(--length)))))
+  translateZ(var(--varTranslate));
+}
+
+@keyframes rotate{
+  from{transform:perspective(var(--varPerspective)) rotateX(360deg);
+  }
+
+  to{transform: perspective(var(--varPerspective)) rotateX(0deg);
+  }
+}
+
+.gallery span{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+}
+
+.gallery a{
+  color: #fff;
+}
+
+.gallery span img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (min-width: 621px) {
+  :root {
+    --varTranslate: calc(var(--length) * 29px)
+  }
+  .gallery {
+    width: 288px;
+    height: 180px;
+    padding-top: 0;
+  }
+
+  .gallery .demo {
+    position:absolute;
+    top: 30px;
+    left: 40px;
+    font-weight: 400;
+    font-size: 24px;
+  }
+  
+  .gallery .github {
+    position:absolute;
+    bottom: 30px;
+    right: 40px;
+    font-weight: 400;
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 821px) {
+  :root {
+    --varTranslate: calc(var(--length) * 25px)
+  }
+  main {
+    background: linear-gradient(#bc13fe 2%, #020309 8% 92%, #bc13fe 98%)
+  }
+  .gallery {
+    width: 160px;
+    height: 100px;
+    padding-top: 0;
+  }
+
+  .gallery .demo {
+    position:absolute;
+    top: 15px;
+    left: 20px;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  
+  .gallery .github {
+    position:absolute;
+    bottom: 15px;
+    right: 20px;
+    font-weight: 300;
+    font-size: 20px;
+  }
+
+  span:hover {
+    #title {
+      display: block;
+    }
+  }
+
+  .pictures {
+    transform:rotateY(calc(var(--id) * (360deg/(var(--length)))))
+    translateZ(var(--varTranslate));
+  }
+  
+  @keyframes rotate{
+    from{transform:perspective(var(--varPerspective)) rotateY(0deg);
+    }
+  
+    to{transform: perspective(var(--varPerspective)) rotateY(360deg);
+    }
+  }
+}
+
+@media only screen and (min-width: 860px) {
+  :root {
+    --varPerspective: calc(var(--length) * 71px);
+    --varTranslate: calc(var(--length) * 27px)
+  }
+  .gallery {
+    width: 170px;
+    height: 106px;
+    padding-top: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  :root {
+    --varPerspective: calc(var(--length) * 142px);
+    --varTranslate: calc(var(--length) * 32px)
+  }
+
+  .gallery {
+    width: 200px;
+    height: 125px;
+    padding-top: 0;
+  }
+
+  .gallery .demo {
+    position:absolute;
+    top: 15px;
+    left: 20px;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  
+  .gallery .github {
+    position:absolute;
+    bottom: 15px;
+    right: 20px;
+    font-weight: 500;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  :root {
+    --varPerspective: calc(var(--length) * 105px);
+    --varTranslate: calc(var(--length) * 41px)
+  }
+
+  .gallery {
+    width: 250px;
+    height: 157px;
+    padding-top: 0;
+  }
+
+  .gallery .demo {
+    position:absolute;
+    top: 30px;
+    left: 40px;
+    font-weight: 400;
+    font-size: 24px;
+    display: none;
+    text-decoration: none;
+  }
+  
+  .gallery .github {
+    position:absolute;
+    bottom: 30px;
+    right: 40px;
+    font-weight: 400;
+    font-size: 24px;
+    display: none;
+    text-decoration: none;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  :root {
+    --varPerspective: calc(var(--length) * 93px);
+    --varTranslate: calc(var(--length) * 43px);
+
+  }
+  .gallery {
+    width: 265px;
+    height: 165px;
+    padding-top: 0;
+  }
+}
+
+@media only screen and (min-width: 1700px) {
+  :root {
+    --varPerspective: calc(var(--length) * 93px);
+    --varTranslate: calc(var(--length) * 51px);
+  }
+  .gallery {
+    width: 320px;
+    height: 200px;
+    padding-top: 0;
+  }
+}
+
